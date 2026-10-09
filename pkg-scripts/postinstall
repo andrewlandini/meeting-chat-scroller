@@ -1,0 +1,10 @@
+#!/bin/sh
+# Quit any running copy, clear any stale Accessibility grant from a previous build
+# (the app is ad-hoc signed, so old grants don't match new builds), then launch the
+# freshly installed app as the logged-in user so macOS prompts for permission.
+pkill -x MeetingChatScroller 2>/dev/null
+tccutil reset Accessibility com.andrewlandini.meetingchatscroller 2>/dev/null
+USER_NAME=$(stat -f %Su /dev/console)
+USER_ID=$(id -u "$USER_NAME")
+[ "$USER_NAME" != "root" ] && launchctl asuser "$USER_ID" sudo -u "$USER_NAME" open "/Applications/MeetingChatScroller.app"
+exit 0

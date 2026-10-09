@@ -12,22 +12,23 @@ Download the `.pkg` (or build it yourself, below) and double-click it. Because t
 2. Go to **System Settings → Privacy & Security** and click **Open Anyway**.
 3. Finish the installer. The app installs to `/Applications` and opens automatically.
 
-Then allow it under **System Settings → Privacy & Security → Accessibility**. If the menu bar icon still shows ⚠️ with the switch on, choose **Reset Permission & Relaunch…** from the menu bar icon.
+Then allow it under **System Settings → Privacy & Security → Accessibility**. If the menu bar icon still shows a warning with the switch on, choose **Reset permission & relaunch** from the menu bar icon.
 
 Requires macOS 13 or newer.
 
 ## Using it
 
-- **Pause / resume:** click the ↑↓ menu bar icon → **Enabled** (also in the Dock icon's right-click menu).
-- **Quit:** menu bar icon → **Quit**, Dock icon right-click → **Quit**, or ⌘Q.
-- **Help:** menu bar icon → **How to Use…**
+- **Open the panel:** click the ↑↓ menu bar icon.
+- **Pause / resume:** **Enabled** in that panel, or the Dock icon’s right-click menu.
+- **Quit:** panel → **Quit**, Dock icon right-click → **Quit**, or ⌘Q.
+- **Help:** panel → **How to use**.
 
 | Menu bar icon | Meaning |
 |---|---|
-| ↑↓ (filled) | Running |
-| ⏸ | Paused because you're using the mouse or keyboard |
-| ↑↓ (faded) | Turned off |
-| ⚠️ | Needs Accessibility permission |
+| ↑↓ | Running |
+| ❚❚ | Paused because you're using the mouse or keyboard |
+| ↑↓ faded | Turned off |
+| ⚠ | Needs Accessibility permission |
 
 ## Build
 
@@ -35,9 +36,9 @@ Needs the Xcode command line tools (`xcode-select --install`).
 
 ```sh
 ./build.sh      # builds a universal app and installs it to ~/Applications
-./package.sh    # builds dist/MeetingChatScroller-1.0.pkg
+./package.sh    # builds dist/MeetingChatScroller-1.1.pkg
 ```
 
-Timing and key counts are constants at the top of `main.swift`.
+Timing is a pair of constants at the top of `main.swift`. The panel is set in Geist, bundled under `fonts/` and licensed under the SIL Open Font License (`fonts/OFL.txt`).
 
 Each rebuild is ad-hoc signed, so macOS treats it as a new app and asks for Accessibility permission again.

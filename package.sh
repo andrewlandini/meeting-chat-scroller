@@ -3,7 +3,7 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 
-VERSION=1.0
+VERSION=1.1
 ./build.sh --no-install
 
 rm -rf dist build/pkgroot
